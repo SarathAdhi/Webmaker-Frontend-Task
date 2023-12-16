@@ -1,0 +1,24 @@
+---
+import { Image } from "astro:assets";
+import Navlinks from "./Navlinks.astro";
+import Button from "@ui/Button.astro";
+
+import logo from "@public/assets/logo.svg";
+import MenuIcon from "@public/assets/menu.svg";
+---
+
+<header
+  class="h-16 w-full z-50 fixed top-0 flex justify-center backdrop-blur-md"
+>
+  <div class="max-w-full w-[1440px] p-4 flex items-center justify-between">
+    <Image src={logo} alt="unicarft logo" />
+
+    <button id="menu-btn-open" class="block md:hidden">
+      <Image src={MenuIcon} alt="menu icon" />
+    </button>
+
+    <Navlinks class="hidden md:block mx-auto space-x-4" />
+
+    <Button class="hidden md:flex" variant="outline">Contact Us</Button>
+  </div>
+</header>

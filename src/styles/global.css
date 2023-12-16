@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  @apply w-[5px];
+}
+::-webkit-scrollbar-track {
+  @apply rounded-xl bg-[#d8b4fe];
+}
+::-webkit-scrollbar-thumb {
+  @apply rounded-xl bg-[#9c3fff];
+}
+::selection {
+  @apply bg-[#d8b4fe];
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+
+    --foreground: 215 28% 17%;
+
+    --primary: 215 28% 17%;
+    --primary-foreground: 0 0% 100%;
+
+    --accent: 210 40% 96.1%;
+
+    --border: 60 23% 88%;
+    --input: 215 14% 34%;
+    --ring: 216 12.2% 83.9%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  @font-face {
+    font-family: "Satoshi";
+    src: url("/fonts/Satoshi-Variable.woff2") format("woff2"),
+      url("/fonts/Satoshi-Variable.woff") format("woff"),
+      url("/fonts/Satoshi-Variable.ttf") format("truetype");
+    font-weight: 300 900;
+    font-display: swap;
+    font-style: normal;
+  }
+
+  html {
+    font-family: "Satoshi";
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl font-black;
+  }
+  h2 {
+    @apply text-4xl md:text-5xl font-black;
+  }
+  h3 {
+    @apply text-3xl md:text-4xl font-bold;
+  }
+  h4 {
+    @apply text-2xl md:text-3xl font-semibold;
+  }
+  h5 {
+    @apply text-xl md:text-2xl font-semibold;
+  }
+  p {
+    @apply text-lg md:text-xl;
+  }
+
+  .pd {
+    @apply p-2 sm:p-4;
+  }
+
+  .text-linear-gradient-clip {
+    background: linear-gradient(
+      180deg,
+      #d8b4fe -43.9%,
+      rgba(216, 180, 254, 0) 172.76%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+}

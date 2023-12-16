@@ -1,0 +1,50 @@
+---
+import { Image } from "astro:assets";
+import Navlinks from "./Navlinks.astro";
+import Button from "@ui/Button.astro";
+
+import CloseIcon from "@public/assets/close.svg";
+---
+
+<aside
+  id="side-menu"
+  class="block md:hidden z-50 shadow-none top-0 right-0 bg-white fixed w-0 duration-200 transition-all h-screen overflow-auto"
+>
+  <div class="!flex-shrink-0 relative flex flex-col items-center gap-4 p-4">
+    <button id="menu-btn-close" class="mr-auto">
+      <Image src={CloseIcon} alt="close icon" />
+    </button>
+
+    <Navlinks id="side-navlink" class="flex flex-col items-center gap-4" />
+
+    <Button variant="outline">Contact Us</Button>
+  </div>
+</aside>
+
+<script>
+  const sideMenu = document.getElementById("side-menu");
+  const sideNavlink = document.querySelectorAll("#side-navlink");
+  const menuButtonOpen = document.getElementById("menu-btn-open");
+  const menuButtonClose = document.getElementById("menu-btn-close");
+
+  const handleSideNavbarOpen = () => {
+    sideMenu?.classList.add("!w-64");
+  };
+
+  const handleSideNavbarClose = () => {
+    sideMenu?.classList.remove("!w-64");
+  };
+
+  sideNavlink?.forEach((element) =>
+    element?.addEventListener("click", handleSideNavbarClose)
+  );
+
+  sideMenu?.addEventListener("mouseout", () => {
+    const isOpen = sideMenu?.classList.contains("!w-64");
+    if (isOpen) sideMenu?.classList.remove("!w-64");
+  });
+
+  menuButtonOpen?.addEventListener("click", handleSideNavbarOpen);
+
+  menuButtonClose?.addEventListener("click", handleSideNavbarClose);
+</script>

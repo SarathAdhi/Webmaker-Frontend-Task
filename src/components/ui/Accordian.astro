@@ -1,0 +1,83 @@
+---
+interface Props {
+  children:
+    | astroHTML.JSX.SlotHTMLAttributes
+    | astroHTML.JSX.SlotHTMLAttributes[];
+}
+---
+
+<div id="accordion">
+  <ul id="accordion__wrapper">
+    <slot />
+  </ul>
+</div>
+
+<script type="module">
+  const getPanelHeight = (accordionItem) => {
+    const accordionInner = accordionItem.querySelector("#panel__inner");
+
+    return accordionInner.getBoundingClientRect().height;
+  };
+
+  const openAccordionItem = (accordionItem) => {
+    const accordionToggleIndicator = accordionItem.querySelector(
+      "#title__toggle-indicator"
+    );
+    const accordionPanel = accordionItem.querySelector("#accordion__panel");
+
+    accordionPanel.style.height = `${getPanelHeight(accordionItem)}px`;
+
+    accordionItem.classList.add("is-active");
+
+    accordionToggleIndicator.innerHTML = `
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    `;
+  };
+
+  const closeAccordionItem = (accordionItem) => {
+    const accordionToggleIndicator = accordionItem.querySelector(
+      "#title__toggle-indicator"
+    );
+
+    const accordionPanel = accordionItem.querySelector("#accordion__panel");
+
+    accordionItem.classList.remove("is-active");
+    accordionPanel.style.height = 0;
+
+    accordionToggleIndicator.innerHTML = `
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 8V16M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    `;
+  };
+
+  const isAccordionOpen = (accordionItem) => {
+    return accordionItem.classList.contains("is-active");
+  };
+
+  function closeAllAccordionItems() {
+    const accordionItems = document.querySelectorAll("#accordion__item");
+
+    accordionItems.forEach((item) => {
+      closeAccordionItem(item);
+    });
+  }
+
+  function toggleAccordionItem() {
+    const accordionItem = event.target.closest("#accordion__item");
+
+    if (!accordionItem || event.target.closest("#accordion__panel")) return;
+
+    if (isAccordionOpen(accordionItem)) {
+      closeAccordionItem(accordionItem);
+      return;
+    }
+
+    closeAllAccordionItems();
+    openAccordionItem(accordionItem);
+  }
+
+  window.toggleAccordionItem = toggleAccordionItem;
+</script>

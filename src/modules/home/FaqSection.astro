@@ -1,0 +1,26 @@
+---
+import { faq } from "@/data.config";
+import SectionLayout from "@layouts/SectionLayout.astro";
+import Accordian from "@ui/Accordian.astro";
+import AccordianItem from "@ui/AccordianItem.astro";
+---
+
+<SectionLayout id="faq" class="p-4 md:p-10 grid gap-10">
+  <div class="text-center grid gap-2">
+    <h2 class="font-bold text-gray-800">Frequently asked questions</h2>
+
+    <p class="font-medium text-gray-500">
+      Everything you need to know about the product and billing.
+    </p>
+  </div>
+
+  <Accordian>
+    {
+      faq.map(({ title, description }) => (
+        <AccordianItem title={title}>
+          <span>{description}</span>
+        </AccordianItem>
+      ))
+    }
+  </Accordian>
+</SectionLayout>

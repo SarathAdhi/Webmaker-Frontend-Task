@@ -1,0 +1,60 @@
+---
+import SectionLayout from "@layouts/SectionLayout.astro";
+import { recentWorkImages } from "@/data.config";
+import Button from "@ui/Button.astro";
+import { Image } from "astro:assets";
+---
+
+<SectionLayout
+  id="recent-works"
+  class="w-full p-0 flex flex-col items-center gap-10"
+>
+  <!-- https://swiperjs.com/element - used Swiperjs component for slideshow -->
+
+  <swiper-container
+    class="w-full h-full"
+    centered-slides="true"
+    loop="true"
+    autoplay-delay="2000"
+    autoplay-disable-on-interaction="false"
+    init="false"
+  >
+    {
+      recentWorkImages.map((img) => (
+        <swiper-slide class="flex items-center justify-center">
+          <Image {...img} class="rounded-md" />
+        </swiper-slide>
+      ))
+    }
+  </swiper-container>
+
+  <Button variant="outline" size="lg">View recent work</Button>
+</SectionLayout>
+
+<script
+  is:inline
+  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"
+></script>
+
+<script is:inline>
+  const swiperEl = document.querySelector("swiper-container");
+
+  Object.assign(swiperEl, {
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+      },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 10,
+      },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 10,
+      },
+    },
+  });
+
+  swiperEl.initialize();
+</script>

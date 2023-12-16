@@ -1,0 +1,51 @@
+---
+interface Props {
+  title: string;
+  children: any;
+}
+
+const { title } = Astro.props;
+---
+
+<li class="w-full border-b last:border-b-0" id="accordion__item">
+  <h5>
+    <button
+      class="w-full border-b last:border-b-0 flex text-left items-center justify-between py-4 gap-2 text-gray-800"
+      onclick="toggleAccordionItem()"
+    >
+      {title}
+
+      <svg
+        class="w-5 h-5 flex-shrink-0"
+        id="title__toggle-indicator"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 8V16M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z"
+          stroke="#1F2937"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+    </button>
+  </h5>
+
+  <div
+    class="invisible overflow-hidden h-0 transition-all"
+    id="accordion__panel"
+  >
+    <div class="pb-4" id="panel__inner">
+      <slot />
+    </div>
+  </div>
+</li>
+
+<style is:global>
+  .is-active #accordion__panel {
+    @apply visible h-auto pb-4;
+  }
+</style>

@@ -1,0 +1,74 @@
+---
+interface Props extends astroHTML.JSX.HTMLAttributes {
+  link_id?: string;
+}
+
+const { link_id, ...restProps } = Astro.props;
+
+const sectionLinks = [
+  {
+    key: "how-it-works",
+    name: "How it works",
+    href: "#how-it-works",
+  },
+  {
+    key: "pricing",
+    name: "Pricing",
+    href: "#pricing",
+  },
+  {
+    key: "faq",
+    name: "FAQ",
+    href: "#faq",
+  },
+];
+---
+
+<nav>
+  <ul {...restProps}>
+    {
+      sectionLinks.map(({ name, href }) => (
+        <a
+          id={link_id}
+          class="transition-all duration-200 text-center font-medium"
+          href={href}
+        >
+          {name}
+        </a>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .active {
+    @apply text-pink-400;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const navLinks = document.querySelectorAll("nav a");
+
+    function highlightNavLink() {
+      const scrollPosition = window.scrollY;
+
+      navLinks.forEach((link) => {
+        const targetId = link?.getAttribute("href")!.substring(1);
+        const targetSection = document.getElementById(targetId);
+
+        const isInViewPort =
+          targetSection?.offsetTop! <= scrollPosition &&
+          targetSection?.offsetTop! + targetSection?.offsetHeight! >
+            scrollPosition;
+
+        if (isInViewPort) link.classList.add("active");
+        else link.classList.remove("active");
+      });
+    }
+
+    highlightNavLink();
+
+    window.addEventListener("scroll", highlightNavLink);
+  });
+</script>

@@ -1,0 +1,46 @@
+---
+import SectionLayout from "@layouts/SectionLayout.astro";
+import { howItWork } from "@/data.config";
+import { Image } from "astro:assets";
+
+import arrow from "@public/assets/recent-work/arrow-right.svg";
+---
+
+<SectionLayout id="how-it-works" class="flex flex-col items-center gap-10">
+  <div class="w-full p-10 grid gap-10 border rounded-3xl shadow-2xl">
+    <div class="text-center space-y-4">
+      <h2 class="text-5xl font-semibold">How it works</h2>
+
+      <p>
+        Premium designs, unlimited requests, super fast delivery, for one flat
+        monthly fee.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-10 lg:gap-20">
+      {
+        howItWork.map(({ title, description }, index) => (
+          <div class="w-full relative grid place-content-center">
+            <h1 class="lg:text-[200px] text-center lg:text-linear-gradient-clip">
+              {index + 1}
+            </h1>
+
+            <div class="w-full lg:absolute bottom-2 text-center grid gap-2">
+              <h3>{title}</h3>
+
+              <span class="font-medium leading-snug">{description}</span>
+            </div>
+
+            {index !== howItWork.length - 1 && (
+              <Image
+                class="hidden lg:block absolute -right-20 top-1/2 -translate-y-1/2"
+                src={arrow}
+                alt="arrow right"
+              />
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</SectionLayout>

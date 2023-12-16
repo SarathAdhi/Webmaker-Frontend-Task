@@ -1,0 +1,54 @@
+---
+import SectionLayout from "@layouts/SectionLayout.astro";
+import Button from "@ui/Button.astro";
+import logo from "@public/assets/logo.svg";
+import { Image } from "astro:assets";
+import { socials } from "@/data.config";
+---
+
+<SectionLayout
+  as="footer"
+  containerClass="relative"
+  class="p-4 md:p-10 2xl:p-20 flex flex-col items-center justify-between gap-20 md:gap-40"
+>
+  <!-- Loading background image doesn't need astro Image component -->
+  <img
+    slot="background-svg"
+    class="-z-10 absolute left-0 w-full h-full object-cover"
+    src="/assets/footer/background.svg"
+  />
+
+  <div class="pt-20 w-full text-center grid place-items-center gap-4">
+    <div class="md:space-y-4 text-gray-800">
+      <h1>No long-term contracts.</h1>
+      <h1>No catches.</h1>
+    </div>
+
+    <span class="text-gray-600 font-medium">
+      Simple. Start your 30-day free trial. Cancel anytime.
+    </span>
+
+    <Button>Contact Us</Button>
+  </div>
+
+  <div class="w-full border-t pt-10">
+    <div class="text-gray-400 grid gap-6">
+      <div class="grid gap-2">
+        <Image src={logo} alt="unicarft logo" />
+
+        <span class="font-medium sm:w-96">
+          Design amazing digital experiences that create more happy in the
+          world.
+        </span>
+      </div>
+
+      <div class="flex items-center justify-between gap-4">
+        <span>© 2077 Untitled UI. All rights reserved.</span>
+
+        <div class="flex-shrink-0 grid grid-cols-3 md:grid-cols-6 gap-4">
+          {socials.map((img) => <Image {...img} />)}
+        </div>
+      </div>
+    </div>
+  </div>
+</SectionLayout>

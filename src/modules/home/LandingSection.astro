@@ -1,0 +1,39 @@
+---
+import SectionLayout from "@layouts/SectionLayout.astro";
+import Button from "@ui/Button.astro";
+import { trustedCompanyImages } from "@/data.config";
+import { Image } from "astro:assets";
+---
+
+<SectionLayout id="landing" class="md:h-screen grid place-items-center gap-10">
+  <!-- Loading background image doesn't need astro Image component -->
+
+  <img
+    slot="background-svg"
+    class="-z-10 top-0 absolute w-full"
+    src="/assets/hero-section/background.svg"
+  />
+
+  <div class="mt-10 md:w-5/6 grid place-items-center gap-6">
+    <h1 class="text-center">
+      Elevate Your Presence with Seamless Design and Innovation.
+    </h1>
+
+    <p class="text-center text-gray-600 font-medium">
+      From strategic planning to digital presence, we're your dedicated partner
+      in achieving solo success.
+    </p>
+
+    <Button>View Pricing</Button>
+  </div>
+
+  <div class="flex flex-col items-center justify-center">
+    <span class="text-center text-gray-400">Trusted By 250+ Companies</span>
+
+    <div
+      class="flex flex-wrap flex-col sm:flex-row items-center justify-center"
+    >
+      {trustedCompanyImages.map((img) => <Image {...img} />)}
+    </div>
+  </div>
+</SectionLayout>

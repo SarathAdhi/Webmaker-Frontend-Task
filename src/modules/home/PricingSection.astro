@@ -1,0 +1,86 @@
+---
+import SectionLayout from "@layouts/SectionLayout.astro";
+import Button from "@ui/Button.astro";
+import { pricingDetails } from "@/data.config";
+import { cn } from "@utils/tw-merge";
+import TickIconSvg from "@components/TickIconSvg.astro";
+
+const center_pricing_card_index = Math.ceil(pricingDetails.length / 2);
+
+// isMiddleCard -> the middle pricing card
+// IsOffered -> is this service included in this plan
+const getTextColor = (isMiddleCard: boolean, isOffered: boolean) =>
+  isMiddleCard && isOffered
+    ? "text-gray-50 stroke-gray-50"
+    : isOffered
+      ? "text-gray-800 stroke-gray-800"
+      : "text-gray-400 stroke-gray-400";
+---
+
+<SectionLayout id="pricing" class="p-4 md:p-10 grid gap-20">
+  <!-- Loading background image doesn't need astro Image component -->
+
+  <img
+    slot="background-svg"
+    class="-z-10 absolute left-0 w-full"
+    src="/assets/pricing/background.svg"
+  />
+
+  <div class="grid place-items-center text-center gap-4">
+    <h2 class="font-bold text-gray-800">
+      Pricing made for collaborative support.
+    </h2>
+
+    <p class="w-full max-w-[700px] font-medium text-gray-500">
+      Plain is made for your entire company. Only pay for users that actually
+      message customers. Everyone else is free, forever.
+    </p>
+  </div>
+
+  <div class="flex flex-wrap items-center justify-center gap-6">
+    {
+      pricingDetails.map(({ title, description, price, points }, index) => {
+        const isMiddleCard = index + 1 === center_pricing_card_index;
+
+        return (
+          <div
+            class={cn(
+              "max-w-full w-full lg:w-[420px] grid gap-10 p-5 px-4 py-8 xl:px-6 xl:py-12 border rounded-2xl",
+              isMiddleCard
+                ? "bg-gray-800 text-white shadow-2xl scale-[1.03] sm:shadow-none sm:scale-100 xl:shadow-2xl xl:scale-[1.03]"
+                : "bg-white text-black"
+            )}
+          >
+            <div>
+              <h4>{title}</h4>
+
+              <span>{description}</span>
+            </div>
+
+            <div class="flex items-center gap-2 ">
+              <h2 class="font-semibold">{price.value}</h2>
+              <p>{price.per}</p>
+            </div>
+
+            <Button variant="outline">Get Started Now</Button>
+
+            <div class="grid gap-2">
+              {points.map(({ point, isOffered }) => (
+                <div
+                  class={cn(
+                    "flex items-start gap-2 font-medium leading-tight",
+                    getTextColor(isMiddleCard, isOffered)
+                  )}
+                >
+                  <TickIconSvg />
+
+                  <span>{point}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+</SectionLayout>

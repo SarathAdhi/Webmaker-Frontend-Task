@@ -1,0 +1,25 @@
+---
+import { cn } from "@utils/tw-merge";
+
+interface Props extends astroHTML.JSX.HTMLAttributes {
+  containerClass?: string;
+  as?: keyof astroHTML.JSX.IntrinsicElements;
+}
+
+const {
+  containerClass,
+  id,
+  as: Element = "section",
+  ...restProps
+} = Astro.props;
+
+export const desktopWidthClass = "pd max-w-full w-[1440px]";
+---
+
+<Element id={id} class={cn("pt-10 flex justify-center", containerClass)}>
+  <slot name="background-svg" />
+
+  <div class={cn(desktopWidthClass, restProps?.class)} {...restProps}>
+    <slot />
+  </div>
+</Element>

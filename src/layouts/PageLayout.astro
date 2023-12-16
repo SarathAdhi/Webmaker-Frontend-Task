@@ -1,0 +1,65 @@
+---
+import { cn } from "@utils/tw-merge";
+import { TopNavbar, SideNavbar } from "@components/navbar/index.astro";
+
+import "@styles/global.css";
+
+interface Props extends astroHTML.JSX.HTMLAttributes {
+  title: string;
+  description?: string;
+}
+
+const {
+  title = "UniCraft",
+  description = "Elevate your digital presence with strategic planning and innovative design. Partner with us for solo success. Your dedicated ally in seamless digital solutions.",
+  ...rest
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:url" content={Astro.url.href} />
+
+    <!-- Preload all the necessary fonts -->
+    <link
+      rel="preload"
+      href="/fonts/Satoshi-Variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Satoshi-Variable.woff"
+      as="font"
+      type="font/woff"
+      crossorigin
+    />
+  </head>
+
+  <body class="w-full h-[200vh] min-h-screen flex flex-col items-center">
+    <TopNavbar />
+    <SideNavbar />
+
+    <main
+      class={cn(
+        "mt-16 lg:mt-0 w-full flex flex-col gap-10 h-full flex-1",
+        rest.class
+      )}
+      {...rest}
+    >
+      <slot />
+    </main>
+  </body>
+</html>

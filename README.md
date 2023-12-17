@@ -1,26 +1,87 @@
-# Astro Starter Kit: Minimal
-
-```sh
-npm create astro@latest -- --template minimal
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+# Webmaker Internship FE Task
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
-
 ```text
 /
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+ ┣ 📂public
+ ┃ ┣ 📂assets
+ ┃ ┃ ┣ 📂footer
+ ┃ ┃ ┃ ┣ 📜background.svg
+ ┃ ┃ ┃ ┣ 📜dribbble.svg
+ ┃ ┃ ┃ ┣ 📜facebook.svg
+ ┃ ┃ ┃ ┣ 📜github.svg
+ ┃ ┃ ┃ ┣ 📜linkedin.svg
+ ┃ ┃ ┃ ┣ 📜twitter.svg
+ ┃ ┃ ┃ ┗ 📜wellfound.svg
+ ┃ ┃ ┣ 📂hero-section
+ ┃ ┃ ┃ ┣ 📜adobe.svg
+ ┃ ┃ ┃ ┣ 📜amazon.svg
+ ┃ ┃ ┃ ┣ 📜background.svg
+ ┃ ┃ ┃ ┣ 📜slack.svg
+ ┃ ┃ ┃ ┣ 📜spotify.svg
+ ┃ ┃ ┃ ┣ 📜zapier.svg
+ ┃ ┃ ┃ ┗ 📜zoom.svg
+ ┃ ┃ ┣ 📂pricing
+ ┃ ┃ ┃ ┣ 📜background.svg
+ ┃ ┃ ┃ ┗ 📜tick-bulletin.svg
+ ┃ ┃ ┣ 📂recent-work
+ ┃ ┃ ┃ ┣ 📜arrow-right.svg
+ ┃ ┃ ┃ ┣ 📜Frame-1.png
+ ┃ ┃ ┃ ┣ 📜Frame-2.png
+ ┃ ┃ ┃ ┣ 📜Frame-3.png
+ ┃ ┃ ┃ ┗ 📜Frame-4.png
+ ┃ ┃ ┣ 📂testimonial
+ ┃ ┃ ┃ ┣ 📜Avatar.png
+ ┃ ┃ ┃ ┗ 📜company-logo.svg
+ ┃ ┃ ┣ 📜close.svg
+ ┃ ┃ ┣ 📜logo.svg
+ ┃ ┃ ┗ 📜menu.svg
+ ┃ ┣ 📂fonts
+ ┃ ┃ ┣ 📜Satoshi-Variable.ttf
+ ┃ ┃ ┣ 📜Satoshi-Variable.woff
+ ┃ ┃ ┗ 📜Satoshi-Variable.woff2
+ ┃ ┗ 📜favicon.svg
+ ┣ 📂src
+ ┃ ┣ 📂components
+ ┃ ┃ ┣ 📂navbar
+ ┃ ┃ ┃ ┣ 📜index.astro
+ ┃ ┃ ┃ ┣ 📜Navlinks.astro
+ ┃ ┃ ┃ ┣ 📜SideNavbar.astro
+ ┃ ┃ ┃ ┗ 📜TopNavbar.astro
+ ┃ ┃ ┣ 📂ui
+ ┃ ┃ ┃ ┣ 📜Accordian.astro
+ ┃ ┃ ┃ ┣ 📜AccordianItem.astro
+ ┃ ┃ ┃ ┗ 📜Button.astro
+ ┃ ┃ ┗ 📜TickIconSvg.astro
+ ┃ ┣ 📂layouts
+ ┃ ┃ ┣ 📜PageLayout.astro
+ ┃ ┃ ┗ 📜SectionLayout.astro
+ ┃ ┣ 📂modules
+ ┃ ┃ ┗ 📂home
+ ┃ ┃ ┃ ┣ 📜FaqSection.astro
+ ┃ ┃ ┃ ┣ 📜FooterSection.astro
+ ┃ ┃ ┃ ┣ 📜HowItWorksSection.astro
+ ┃ ┃ ┃ ┣ 📜index.astro
+ ┃ ┃ ┃ ┣ 📜LandingSection.astro
+ ┃ ┃ ┃ ┣ 📜PricingSection.astro
+ ┃ ┃ ┃ ┣ 📜RecentWorkSection.astro
+ ┃ ┃ ┃ ┗ 📜TestimonialSection.astro
+ ┃ ┣ 📂pages
+ ┃ ┃ ┗ 📜index.astro
+ ┃ ┣ 📂styles
+ ┃ ┃ ┗ 📜global.css
+ ┃ ┣ 📂utils
+ ┃ ┃ ┗ 📜tw-merge.ts
+ ┃ ┗ 📜env.d.ts
+ ┣ 📜.gitignore
+ ┣ 📜astro.config.mjs
+ ┣ 📜data.config.ts
+ ┣ 📜package-lock.json
+ ┣ 📜package.json
+ ┣ 📜README.md
+ ┣ 📜tailwind.config.mjs
+ ┗ 📜tsconfig.json
 ```
 
 Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
@@ -42,6 +103,22 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## Getting started
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+First, install all the required dependencies
+
+```bash
+npm install
+# or
+yarn install
+```
+
+Now, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+Open [http://localhost:4321](http://localhost:4321) with your browser to see the result.

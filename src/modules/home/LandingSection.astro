@@ -3,15 +3,16 @@ import SectionLayout from "@layouts/SectionLayout.astro";
 import Button from "@ui/Button.astro";
 import { trustedCompanyImages } from "@/data.config";
 import { Image } from "astro:assets";
+
+import Background from "@public/assets/hero-section/background.svg";
 ---
 
 <SectionLayout id="landing" class="md:h-screen grid place-items-center gap-10">
-  <!-- Loading background image doesn't need astro Image component -->
-
-  <img
+  <Image
     slot="background-svg"
     class="-z-10 top-0 absolute w-full"
-    src="/assets/hero-section/background.svg"
+    src={Background}
+    alt="background vector"
   />
 
   <div class="mt-10 md:w-5/6 grid place-items-center gap-6">

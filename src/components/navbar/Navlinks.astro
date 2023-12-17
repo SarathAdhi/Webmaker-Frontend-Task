@@ -1,9 +1,10 @@
 ---
 interface Props extends astroHTML.JSX.HTMLAttributes {
   link_id?: string;
+  containerClass?: string;
 }
 
-const { link_id, ...restProps } = Astro.props;
+const { link_id, containerClass = "", ...restProps } = Astro.props;
 
 const sectionLinks = [
   {
@@ -24,7 +25,7 @@ const sectionLinks = [
 ];
 ---
 
-<nav>
+<nav class={containerClass}>
   <ul {...restProps}>
     {
       sectionLinks.map(({ name, href }) => (

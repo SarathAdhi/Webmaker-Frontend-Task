@@ -4,6 +4,9 @@ import Button from "@ui/Button.astro";
 import { pricingDetails } from "@/data.config";
 import { cn } from "@utils/tw-merge";
 import TickIconSvg from "@components/TickIconSvg.astro";
+import { Image } from "astro:assets";
+
+import Background from "@public/assets/pricing/background.svg";
 
 const center_pricing_card_index = Math.ceil(pricingDetails.length / 2);
 
@@ -18,12 +21,11 @@ const getTextColor = (isMiddleCard: boolean, isOffered: boolean) =>
 ---
 
 <SectionLayout id="pricing" class="p-4 md:p-10 grid gap-20">
-  <!-- Loading background image doesn't need astro Image component -->
-
-  <img
+  <Image
     slot="background-svg"
     class="-z-10 absolute left-0 w-full"
-    src="/assets/pricing/background.svg"
+    src={Background}
+    alt="background vector"
   />
 
   <div class="grid place-items-center text-center gap-4">

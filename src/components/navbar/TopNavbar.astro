@@ -13,11 +13,11 @@ import MenuIcon from "@public/assets/menu.svg";
   <div class="max-w-full w-[1440px] p-4 flex items-center justify-between">
     <Image src={logo} alt="unicarft logo" />
 
-    <button id="menu-btn-open" class="block md:hidden">
+    <button id="menu-btn-open" class="inline-flex md:hidden">
       <Image src={MenuIcon} alt="menu icon" />
     </button>
 
-    <Navlinks class="hidden md:block mx-auto space-x-4" />
+    <Navlinks containerClass="hidden md:block" class="mx-auto space-x-4" />
 
     <Button class="hidden md:flex" variant="outline">Contact Us</Button>
   </div>

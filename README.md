@@ -2,6 +2,8 @@
 
 <img width="1266" alt="image" src="https://github.com/SarathAdhi/Webmaker-Frontend-Task/assets/91727830/e23e5803-3458-49af-aa65-453fc9a7d315">
 
+### Note: While running or generating report in Lighthouse, check in Incognito mode, because chrome extensions might reduce performance or the score.
+
 ## 🚀 Project Structure
 
 ```text

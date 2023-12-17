@@ -3,13 +3,13 @@ import { cn } from "@utils/tw-merge";
 
 interface Props extends astroHTML.JSX.HTMLAttributes {
   containerClass?: string;
-  as?: keyof astroHTML.JSX.IntrinsicElements;
+  element?: keyof astroHTML.JSX.DefinedIntrinsicElements;
 }
 
 const {
   containerClass,
   id,
-  as: Element = "section",
+  element: Element = "section",
   ...restProps
 } = Astro.props;
 

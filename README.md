@@ -1,5 +1,7 @@
 # Webmaker Internship FE Task
 
+<img width="1266" alt="image" src="https://github.com/SarathAdhi/Webmaker-Frontend-Task/assets/91727830/e23e5803-3458-49af-aa65-453fc9a7d315">
+
 ## 🚀 Project Structure
 
 ```text
